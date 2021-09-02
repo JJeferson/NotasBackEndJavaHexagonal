@@ -10,7 +10,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 public class InterceptorConfig extends WebMvcConfigurerAdapter {
 
 
-    @Value("123654789")  // em base64 MTIzNjU0Nzg5
+    @Value("${tokenDecodificado}")  // em base64 MTIzNjU0Nzg5
     private String TokenFixo;
 
     @Bean
@@ -25,7 +25,7 @@ public class InterceptorConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(final InterceptorRegistry registry) {
         registry.addInterceptor(requestHandler()).excludePathPatterns(
-                "/healthcheck"
+                "/healthcheck" //aqui é pra pro excessões , endpoints publicos
         );
     }
 
