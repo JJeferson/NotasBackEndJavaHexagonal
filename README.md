@@ -10,11 +10,17 @@ Banco MongoDB com objetos dentro de objetos.
 
 -Metodos disponiveis até o momento: </br>
  Lista tudo sem paginação. </br>
--[GET] http://localhost:8080/notas/todas_em_lista </br>
+-[GET] http://localhost:8080/notas/todas_em_lista 
+ 
+exemplo de curl: </br>
+curl --location --request GET 'http://localhost:8080/notas/todas_em_lista' \
+--header 'Authorization: MTIzNjU0Nzg5'
 </br>
+
 -[POST] http://localhost:8080/notas/nova_nota </br>
 curl de Exemplo: </br> </br>
 curl --location --request POST 'http://localhost:8080/notas/nova_nota' \
+--header 'Authorization: MTIzNjU0Nzg5' \
 --header 'Content-Type: application/json' \
 --data-raw '{
 "tipoLancamento":"123",
@@ -46,9 +52,11 @@ curl --location --request POST 'http://localhost:8080/notas/nova_nota' \
 </br></br>
 -[GET] ListaPorNossoCNPJ/CNPJEMissor </br>
 curl de Exemplo:  
-curl --location --request GET 'http://localhost:8080/notas/lista_notas_nosso_cliente?cnpj=123'
+
+curl --location --request GET 'http://localhost:8080/notas/lista_notas_nosso_cliente?cnpj=123' \
+--header 'Authorization: MTIzNjU0Nzg5'
 </br></br>
 -[GET] Find por id </br>
 curl de Exemplo:   </br>
-curl --location --request GET 'http://localhost:8080/notas/findbyid?id=613107884540935102969600'
-
+curl --location --request GET 'http://localhost:8080/notas/findbyid?id=613107884540935102969600' \
+--header 'Authorization: MTIzNjU0Nzg5'
