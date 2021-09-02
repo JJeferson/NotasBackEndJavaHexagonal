@@ -25,4 +25,14 @@ public class NotasService implements NotasUseCase {
         return notasPortOut.getNotas();
     }
 
+    @Override
+    public List<Notas> getNotasPorCnpjEmissor(String cnpj) {
+        return notasPortOut.getNotasPorCnpjEmissor(cnpj);
+    }
+
+    @Override
+    public List<Notas> getNotasPorId(String id) {
+        return null;
+    }
+
 }

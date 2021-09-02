@@ -21,4 +21,14 @@ public class NotasPersistence implements NotasPortOut {
     public List<Notas> getNotas() {
         return notasRepository.findAll();
     }
+
+    @Override
+    public List<Notas> getNotasPorCnpjEmissor(String cnpj) {
+        return notasRepository.findAllByCnjpNossoCliente(cnpj);
+    }
+
+    @Override
+    public List<Notas> getNotasPorId(String id) {
+        return null;
+    }
 }

@@ -7,5 +7,7 @@ import java.util.List;
 public interface NotasUseCase {
     Notas SaveNotas (Notas notas);
     List<Notas> getNotas();
+    List<Notas> getNotasPorCnpjEmissor(String cnpj);
+    List<Notas> getNotasPorId(String id);
 
 }

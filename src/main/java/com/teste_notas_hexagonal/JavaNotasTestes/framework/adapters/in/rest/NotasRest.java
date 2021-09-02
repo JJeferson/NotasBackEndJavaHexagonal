@@ -9,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -26,6 +27,28 @@ public class NotasRest {
     {
         Notas notaSalva = notasUseCase.SaveNotas(nota);
         return ResponseEntity.ok(notaSalva);
+    }
+
+
+    @RequestMapping(value = "/lista_notas_nosso_cliente", method = RequestMethod.GET)
+    public ResponseEntity<List<Notas>> listaNotasNossoCliente
+            (@RequestParam(value = "cnpj", defaultValue = "0") String cnpj)
+    {
+        if(cnpj=="0"){
+            Notas notaException = new Notas();
+            notaException.setCnjpCliente("ERRO: Para usar este endpoint precisa informar um cnpj de nosso cliente Valido");
+            List<Notas> listNotas = new ArrayList<>();
+            listNotas.add(notaException);
+            return ResponseEntity.ok(listNotas);
+        }
+        List<Notas> listNotas = notasUseCase.getNotasPorCnpjEmissor(cnpj);
+        if(listNotas.size()==0){
+            Notas notaException = new Notas();
+            notaException.setCnjpCliente("ERRO: Nenhum registro encontrado, verifique se o cnpj certo");
+            listNotas.add(notaException);
+            return ResponseEntity.ok(listNotas);
+        }
+        return ResponseEntity.ok(listNotas);
     }
 
     @RequestMapping(value = "/todas_em_lista", method = RequestMethod.GET)
