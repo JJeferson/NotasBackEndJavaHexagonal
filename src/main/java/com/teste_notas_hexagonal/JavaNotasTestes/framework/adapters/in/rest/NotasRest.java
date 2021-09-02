@@ -30,6 +30,19 @@ public class NotasRest {
     }
 
 
+    @RequestMapping(value = "/findbyid", method = RequestMethod.GET)
+    public ResponseEntity<Notas> findbyid
+            (@RequestParam(value = "id", defaultValue = "0") String id)
+    {
+        if(id=="0"){
+            Notas notaException = new Notas();
+            notaException.setCnjpCliente("ERRO: um id precisa ser informado");
+            return ResponseEntity.status(412).body(notaException);
+        }
+        Notas notas = notasUseCase.getNotasPorId(id);
+        return ResponseEntity.ok(notas);
+    }
+
     @RequestMapping(value = "/lista_notas_nosso_cliente", method = RequestMethod.GET)
     public ResponseEntity<List<Notas>> listaNotasNossoCliente
             (@RequestParam(value = "cnpj", defaultValue = "0") String cnpj)
@@ -39,14 +52,14 @@ public class NotasRest {
             notaException.setCnjpCliente("ERRO: Para usar este endpoint precisa informar um cnpj de nosso cliente Valido");
             List<Notas> listNotas = new ArrayList<>();
             listNotas.add(notaException);
-            return ResponseEntity.ok(listNotas);
+            return ResponseEntity.status(412).body(listNotas);
         }
         List<Notas> listNotas = notasUseCase.getNotasPorCnpjEmissor(cnpj);
         if(listNotas.size()==0){
             Notas notaException = new Notas();
             notaException.setCnjpCliente("ERRO: Nenhum registro encontrado, verifique se o cnpj certo");
             listNotas.add(notaException);
-            return ResponseEntity.ok(listNotas);
+            return ResponseEntity.status(404).body(listNotas);
         }
         return ResponseEntity.ok(listNotas);
     }
@@ -55,6 +68,12 @@ public class NotasRest {
     public ResponseEntity<List<Notas>> todasEmLista()
     {
         List<Notas> listNotas = notasUseCase.getNotas();
+        if(listNotas.size()==0){
+            Notas notaException = new Notas();
+            notaException.setCnjpCliente("ERRO: Nenhum registro encontrado");
+            listNotas.add(notaException);
+            return ResponseEntity.status(404).body(listNotas);
+        }
         return ResponseEntity.ok(listNotas);
     }
 

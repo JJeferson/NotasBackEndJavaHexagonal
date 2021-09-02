@@ -6,12 +6,12 @@ Banco MongoDB com objetos dentro de objetos.
 -Requisitos:</br>
 *Java11;</br>
 *MongoDB;</br>
-</br>
+</br></br>
 
 -Metodos disponiveis até o momento: </br>
  Lista tudo sem paginação. </br>
 -[GET] http://localhost:8080/notas/todas_em_lista </br>
-</br></br>
+</br>
 -[POST] http://localhost:8080/notas/nova_nota </br>
 curl de Exemplo: </br> </br>
 curl --location --request POST 'http://localhost:8080/notas/nova_nota' \
@@ -43,7 +43,12 @@ curl --location --request POST 'http://localhost:8080/notas/nova_nota' \
 }
 ]
 }'
-</br></br></br>
+</br></br>
 -[GET] ListaPorNossoCNPJ/CNPJEMissor </br>
 curl de Exemplo:  
-curl --location --request GET 'http://localhost:8080/notas//lista_notas_nosso_cliente?cnpj=123'
+curl --location --request GET 'http://localhost:8080/notas/lista_notas_nosso_cliente?cnpj=123'
+</br></br>
+-[GET] Find por id </br>
+curl de Exemplo:   </br>
+curl --location --request GET 'http://localhost:8080/notas/findbyid?id=613107884540935102969600'
+

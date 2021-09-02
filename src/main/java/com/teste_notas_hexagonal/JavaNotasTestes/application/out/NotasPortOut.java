@@ -8,5 +8,5 @@ public interface NotasPortOut {
     Notas SaveNotas (Notas notas);
     List<Notas> getNotas();
     List<Notas> getNotasPorCnpjEmissor(String cnpj);
-    List<Notas> getNotasPorId(String id);
+    Notas getNotasPorId(String id);
 }

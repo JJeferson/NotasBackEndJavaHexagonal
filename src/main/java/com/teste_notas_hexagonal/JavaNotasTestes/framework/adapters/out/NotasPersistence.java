@@ -28,7 +28,7 @@ public class NotasPersistence implements NotasPortOut {
     }
 
     @Override
-    public List<Notas> getNotasPorId(String id) {
-        return null;
+    public Notas getNotasPorId(String id) {
+        return notasRepository.findById(id).get();
     }
 }

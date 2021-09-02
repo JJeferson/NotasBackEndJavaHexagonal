@@ -31,8 +31,8 @@ public class NotasService implements NotasUseCase {
     }
 
     @Override
-    public List<Notas> getNotasPorId(String id) {
-        return null;
+    public Notas getNotasPorId(String id) {
+        return notasPortOut.getNotasPorId(id);
     }
 
 }
