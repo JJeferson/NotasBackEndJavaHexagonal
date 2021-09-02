@@ -32,22 +32,23 @@ public class NotasRest {
 
     @RequestMapping(value = "/findbyid", method = RequestMethod.GET)
     public ResponseEntity<Notas> findbyid
-            (@RequestParam(value = "id", defaultValue = "0") String id)
+            (@RequestParam(value = "id", required=false, defaultValue = "0") String id)
     {
-        if(id=="0"){
+        if(id.equals("0")){
             Notas notaException = new Notas();
             notaException.setCnjpCliente("ERRO: um id precisa ser informado");
             return ResponseEntity.status(412).body(notaException);
-        }
+        }else{
         Notas notas = notasUseCase.getNotasPorId(id);
         return ResponseEntity.ok(notas);
+        }
     }
 
     @RequestMapping(value = "/lista_notas_nosso_cliente", method = RequestMethod.GET)
     public ResponseEntity<List<Notas>> listaNotasNossoCliente
-            (@RequestParam(value = "cnpj", defaultValue = "0") String cnpj)
+            (@RequestParam(value = "cnpj", required=false, defaultValue = "0") String cnpj)
     {
-        if(cnpj=="0"){
+        if(cnpj.equals("0")){
             Notas notaException = new Notas();
             notaException.setCnjpCliente("ERRO: Para usar este endpoint precisa informar um cnpj de nosso cliente Valido");
             List<Notas> listNotas = new ArrayList<>();

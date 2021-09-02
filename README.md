@@ -7,6 +7,19 @@ Banco MongoDB com objetos dentro de objetos.
 *Java11;</br>
 *MongoDB;</br>
 </br></br>
+-Sobre os Testes </br>
+*Os testes de adapters e outros rodam sem necessidade de iniciar </br>
+instancia do spring.
+</br>
+*Os testes referentes ao adapter in/ controller precisam de atenção. </br>
+Certifique-se de ter lançados registros condizentes com as necessidades dos teste.
+</br>
+*Para rodar o relatório de cobertura acesse via dos como administrador da maquina </br>
+a pasta do projeto. </br>
+Então rode o comando mvn test e aguarde. </br>
+Vai baixar dependencias e executar os testes e gerar o relatório.
+</br>
+Ele vai estar na pasta dentro de \target\site\jacoco\index.html
 
 -Metodos disponiveis até o momento: </br>
  Lista tudo sem paginação. </br>
