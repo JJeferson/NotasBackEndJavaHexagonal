@@ -6,6 +6,7 @@ Banco MongoDB com objetos dentro de objetos.
 -Requisitos:</br>
 *Java11;</br>
 *MongoDB;</br>
+*Maven instalado e configurado;
 </br></br>
 -Sobre os Testes </br>
 *Os testes de adapters e outros rodam sem necessidade de iniciar </br>
