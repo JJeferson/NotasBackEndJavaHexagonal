@@ -9,7 +9,10 @@ Banco MongoDB com objetos dentro de objetos.
 *Maven instalado e configurado;
 </br></br>
 -Swagger: http://localhost:8080/swagger-ui.html
-</br></br>
+</br>
+<img src="swagger_img.png"> </br>
+
+</br>
 
 Testes: 100% de cobertura alcançada
 Atenção: Para os testes rodar precisa do mongoDB instalado.</br>
