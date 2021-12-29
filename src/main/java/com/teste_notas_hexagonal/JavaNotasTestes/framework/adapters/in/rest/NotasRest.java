@@ -3,6 +3,9 @@ package com.teste_notas_hexagonal.JavaNotasTestes.framework.adapters.in.rest;
 
 import com.teste_notas_hexagonal.JavaNotasTestes.application.in.NotasUseCase;
 import com.teste_notas_hexagonal.JavaNotasTestes.domain.Notas;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.http.ResponseEntity;
@@ -20,6 +23,11 @@ public class NotasRest {
     @Autowired
     NotasUseCase notasUseCase;
 
+    @ApiOperation(value="Grava nova nota")
+    @ApiResponses(value={
+            @ApiResponse(code=200,message="ok"),
+            @ApiResponse(code=500,message="Internal Server Error")
+    })
     @Transactional
     @CacheEvict(value = "/nova_nota", allEntries = true)
     @PostMapping("/nova_nota")
@@ -30,6 +38,12 @@ public class NotasRest {
     }
 
 
+    @ApiOperation(value="Localiza uma nota")
+    @ApiResponses(value={
+            @ApiResponse(code=200,message="ok"),
+            @ApiResponse(code=500,message="Internal Server Error"),
+            @ApiResponse(code=404,message="Not Found")
+    })
     @RequestMapping(value = "/findbyid", method = RequestMethod.GET)
     public ResponseEntity<Notas> findbyid
             (@RequestParam(value = "id", required=false, defaultValue = "0") String id)
@@ -44,6 +58,13 @@ public class NotasRest {
         }
     }
 
+
+    @ApiOperation(value="Localiza notas desse cliente pelo cnpj")
+    @ApiResponses(value={
+            @ApiResponse(code=200,message="ok"),
+            @ApiResponse(code=500,message="Internal Server Error"),
+            @ApiResponse(code=404,message="Not Found")
+    })
     @RequestMapping(value = "/lista_notas_nosso_cliente", method = RequestMethod.GET)
     public ResponseEntity<List<Notas>> listaNotasNossoCliente
             (@RequestParam(value = "cnpj", required=false, defaultValue = "0") String cnpj)
@@ -65,16 +86,17 @@ public class NotasRest {
         return ResponseEntity.ok(listNotas);
     }
 
+    @ApiOperation(value="Localiza todas as notas")
+    @ApiResponses(value={
+            @ApiResponse(code=200,message="ok"),
+            @ApiResponse(code=500,message="Internal Server Error"),
+            @ApiResponse(code=404,message="Not Found")
+    })
     @RequestMapping(value = "/todas_em_lista", method = RequestMethod.GET)
     public ResponseEntity<List<Notas>> todasEmLista()
     {
         List<Notas> listNotas = notasUseCase.getNotas();
-        if(listNotas.size()==0){
-            Notas notaException = new Notas();
-            notaException.setCnjpCliente("ERRO: Nenhum registro encontrado");
-            listNotas.add(notaException);
-            return ResponseEntity.status(404).body(listNotas);
-        }
+
         return ResponseEntity.ok(listNotas);
     }
 

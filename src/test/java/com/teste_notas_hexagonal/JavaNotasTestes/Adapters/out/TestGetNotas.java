@@ -2,10 +2,8 @@ package com.teste_notas_hexagonal.JavaNotasTestes.Adapters.out;
 
 import com.teste_notas_hexagonal.JavaNotasTestes.domain.Notas;
 import com.teste_notas_hexagonal.JavaNotasTestes.framework.adapters.out.NotasPersistence;
-import com.teste_notas_hexagonal.JavaNotasTestes.framework.adapters.out.NotasRepository;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
-import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;

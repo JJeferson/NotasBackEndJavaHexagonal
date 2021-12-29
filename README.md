@@ -8,12 +8,16 @@ Banco MongoDB com objetos dentro de objetos.
 *MongoDB;</br>
 *Maven instalado e configurado;
 </br></br>
--Sobre os Testes </br>
-*Os testes de adapters e outros rodam sem necessidade de iniciar </br>
-instancia do spring.
-</br>
-*Os testes referentes ao adapter in/ controller precisam de atenção. </br>
-Certifique-se de ter lançados registros condizentes com as necessidades dos teste.
+-Swagger: http://localhost:8080/swagger-ui.html
+</br></br>
+
+Testes: 100% de cobertura alcançada
+Atenção: Para os testes rodar precisa do mongoDB instalado.</br>
+Os testes vão testar isso.
+<img src="cobertura.png"> </br>
+
+
+</br></br>
 </br>
 *Para rodar o relatório de cobertura acesse via dos como administrador da maquina </br>
 a pasta do projeto. </br>

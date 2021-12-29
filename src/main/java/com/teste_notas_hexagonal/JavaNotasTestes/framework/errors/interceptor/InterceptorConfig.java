@@ -1,4 +1,4 @@
-package com.teste_notas_hexagonal.JavaNotasTestes.framework.interceptor;
+package com.teste_notas_hexagonal.JavaNotasTestes.framework.errors.interceptor;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
@@ -25,7 +25,8 @@ public class InterceptorConfig extends WebMvcConfigurerAdapter {
     @Override
     public void addInterceptors(final InterceptorRegistry registry) {
         registry.addInterceptor(requestHandler()).excludePathPatterns(
-                "/healthcheck" //aqui é pra pro excessões , endpoints publicos
+                "/healthcheck", //aqui é pra pro excessões , endpoints publicos
+                "/swagger-ui"
         );
     }
 

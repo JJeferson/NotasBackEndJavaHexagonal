@@ -1,6 +1,8 @@
 package com.teste_notas_hexagonal.JavaNotasTestes.Adapters.in;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.teste_notas_hexagonal.JavaNotasTestes.domain.Notas;
+import com.teste_notas_hexagonal.JavaNotasTestes.framework.adapters.out.NotasRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -15,6 +17,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest
 @AutoConfigureMockMvc
 public class TestListaNotasNossoCliente {
+    @Autowired
+    NotasRepository notasRepository;
 
     private String  cnpjValido = "123"; // antes de testar certifique que existe o cnpj
     private String  cnpjErrado = "1123"; // antes de testar certifique que não  o existe
@@ -26,6 +30,10 @@ public class TestListaNotasNossoCliente {
 
     @Test
     public void Caso01() throws Exception{
+        Notas Teste = new Notas();
+        Teste.setCnjpNossoCliente(cnpjValido);
+        notasRepository.save(Teste);
+
         HttpHeaders headers = new HttpHeaders();
         headers.setContentType(MediaType.APPLICATION_JSON);
         headers.set("Authorization", "MTIzNjU0Nzg5");
@@ -34,6 +42,7 @@ public class TestListaNotasNossoCliente {
                 contentType("application/json").
                 headers(headers)).
                 andExpect(status().isOk());
+        notasRepository.delete(Teste);
     }
 
     @Test

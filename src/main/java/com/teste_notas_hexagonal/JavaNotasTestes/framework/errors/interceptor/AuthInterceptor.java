@@ -1,4 +1,4 @@
-package com.teste_notas_hexagonal.JavaNotasTestes.framework.interceptor;
+package com.teste_notas_hexagonal.JavaNotasTestes.framework.errors.interceptor;
 
 import com.auth0.jwt.exceptions.JWTDecodeException;
 import com.auth0.jwt.exceptions.TokenExpiredException;
@@ -24,8 +24,9 @@ public class AuthInterceptor implements HandlerInterceptor {
         String authorization = request.getHeader("Authorization");
 
 
-
+/*
         try {
+
             if(authorization==null) {
                 Error error = new Error("401", "Unauthorized Request", "Precisa informar um header Authorization", 1);
                 response.getWriter().write(new Gson().toJson(error));
@@ -45,6 +46,7 @@ public class AuthInterceptor implements HandlerInterceptor {
                 response.setContentType("application/json");
                 return false;
             }
+
         } catch(TokenExpiredException ex) {
 
             Error error = new Error("401", "Unauthorized Request", "Token expirado", 1);
@@ -71,7 +73,7 @@ public class AuthInterceptor implements HandlerInterceptor {
 
             return false;
         }
-
+*/
         return true;
 
     }
