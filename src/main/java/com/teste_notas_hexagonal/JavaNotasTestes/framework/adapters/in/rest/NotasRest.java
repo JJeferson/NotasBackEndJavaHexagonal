@@ -96,7 +96,6 @@ public class NotasRest {
     public ResponseEntity<List<Notas>> todasEmLista()
     {
         List<Notas> listNotas = notasUseCase.getNotas();
-
         return ResponseEntity.ok(listNotas);
     }
 
