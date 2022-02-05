@@ -160,6 +160,11 @@
 						<exclude>com/teste_notas_hexagonal/**/AuthInterceptor.*</exclude>
 						<exclude>com/teste_notas_hexagonal/**/InterceptorConfig.*</exclude>
 						<exclude>com/teste_notas_hexagonal/**/JavaNotasTestesApplication.*</exclude>
+						<exclude>com/teste_notas_hexagonal/**/RestResponseEntityExceptionHandler.*</exclude>
+						<exclude>com/teste_notas_hexagonal/**/BadGatewayException.*</exclude>
+						<exclude>com/teste_notas_hexagonal/**/NotFoundException.*</exclude>
+						<exclude>com/teste_notas_hexagonal/**/BadGatewayException.*</exclude>
+						<exclude>com/teste_notas_hexagonal/**/BadGatewayException.*</exclude>
 					</excludes>
 				</configuration>
 				<executions>
